@@ -9,6 +9,7 @@ namespace listaenlazadaS
     class Locomotora
     {
         Vagon Primero { get; set; }
+        Vagon Ultimo { get; set; }
 
         public void AgregaPrimero(int valor)
         {
@@ -56,6 +57,22 @@ namespace listaenlazadaS
                 tmp = tmp.Sig;
             }
             return listaVag;
+        }
+
+        public void EliminaUltimo()
+        {
+            Vagon nuevo = new Vagon();
+
+            if(this.Ultimo == null)
+            {
+                Vagon tmp = this.Primero;
+                while (tmp.Sig != null)
+                {
+                    tmp = tmp.Sig;
+                }
+                tmp.Sig = nuevo;
+            }
+            
         }
     }
 }
