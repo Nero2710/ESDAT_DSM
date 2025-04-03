@@ -30,6 +30,21 @@ namespace listaenlazadaS
 
         }
 
+        public int Largo()
+        {
+            return 0;
+        }
+
+        public int GetValor(int pos)
+        {
+            return 0;
+        }
+
+        public void AgregLEfinal(Locomotora otro)
+        {
+
+        }
+
 
         public void AgregaFinal(int valor)
         {
@@ -63,16 +78,40 @@ namespace listaenlazadaS
         {
             Vagon nuevo = new Vagon();
 
-            if(this.Ultimo == null)
+            if(this.Primero == null)
+            {
+                return;
+            }
+            else if(this.Primero.Sig != null)
+            {
+                this.Primero = null;
+            }
+            else
             {
                 Vagon tmp = this.Primero;
-                while (tmp.Sig != null)
+                while (tmp.Sig != null && tmp.Sig.Sig != null)
                 {
                     tmp = tmp.Sig;
                 }
-                tmp.Sig = nuevo;
+                tmp.Sig = null;
             }
             
         }
+        public bool ExisteValor(int valor)
+        {
+            
+            Vagon tmp = this.Primero;
+            while(tmp != null)
+            {
+                if (tmp.Dato == valor)
+                {
+                    return true;
+                }
+                tmp = tmp.Sig;
+            }
+
+            return false;
+        }
+        
     }
 }
